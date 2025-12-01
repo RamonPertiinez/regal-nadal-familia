@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <title>Missió del pare</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; text-align: center; }
+    .ocult { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Missió del pare</h1>
+  <p>
+    Has trobat tots els papers amb números per casa.<br/>
+    Introdueix el número que creus que és la clau final.
+  </p>
+
+  <input id="resposta" type="text" placeholder="Escriu aquí..." />
+  <button onclick="comprovar()">Comprova</button>
+
+  <p id="missatge"></p>
+
+  <div id="pista-final" class="ocult">
+    <h2>Has resolt l'enigma!</h2>
+    <p>La teva part del misteri és el <strong>DIA: 10</strong>.</p>
+  </div>
+
+  <script>
+    function comprovar() {
+      const valor = document.getElementById('resposta').value.trim();
+      const missatge = document.getElementById('missatge');
+      const pista = document.getElementById('pista-final');
+
+      if (valor === '10') {
+        missatge.textContent = '';
+        pista.classList.remove('ocult');
+      } else {
+        missatge.textContent = 'Mmm... això no sembla correcte. Torna-ho a intentar.';
+      }
+    }
+  </script>
+</body>
+</html>
