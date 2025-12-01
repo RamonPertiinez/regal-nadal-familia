@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <title>Missió de la mare</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; text-align: center; }
+    .ocult { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Missió de la mare</h1>
+  <p>Observa aquestes imatges i troba què tenen en comú.</p>
+
+  <p>🎃 🍂 🌰 📅 🎵</p>
+
+  <p>
+    Escriu quin mes creus que representen.
+  </p>
+
+  <input id="resposta" type="text" placeholder="Mes..." />
+  <button onclick="comprovar()">Comprova</button>
+
+  <p id="missatge"></p>
+
+  <div id="pista-final" class="ocult">
+    <h2>Fantàstic!</h2>
+    <p>La teva part del misteri és el <strong>MES: OCTUBRE</strong>.</p>
+  </div>
+
+  <script>
+    function comprovar() {
+      const valor = document.getElementById('resposta').value.trim().toLowerCase();
+      const missatge = document.getElementById('missatge');
+      const pista = document.getElementById('pista-final');
+
+      if (valor === 'octubre') {
+        missatge.textContent = '';
+        pista.classList.remove('ocult');
+      } else {
+        missatge.textContent = 'No sembla el mes correcte... prova un altre cop.';
+      }
+    }
+  </script>
+</body>
+</html>
