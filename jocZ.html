@@ -33,13 +33,13 @@
     }
 
     .card {
-      background: rgba(248, 250, 252, 0.96);
+      background: rgba(248, 250, 252, 0.97);
       border-radius: 24px;
-      padding: 32px 28px 28px;
+      padding: 32px 28px 26px;
       box-shadow:
         0 18px 40px rgba(15, 23, 42, 0.35),
         0 0 0 1px rgba(148, 163, 184, 0.35);
-      max-width: 620px;
+      max-width: 680px;
       margin: 0 auto;
       text-align: center;
       animation: floatIn 0.7s ease-out forwards;
@@ -84,39 +84,84 @@
     .subtitle {
       font-size: 14px;
       color: #475569;
-      margin-bottom: 20px;
-      line-height: 1.55;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .step-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #e2f3ff;
+      color: #0f172a;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    .riddle-box {
+      text-align: left;
+      background: #f1f5f9;
+      border-radius: 18px;
+      padding: 14px 16px;
+      border: 1px solid #e2e8f0;
+      font-size: 13px;
+      color: #1e293b;
+      margin-bottom: 16px;
+    }
+
+    .riddle-box p {
+      margin-bottom: 8px;
+    }
+
+    .riddle-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .riddle-keyword {
+      font-weight: 600;
+      color: #0f172a;
     }
 
     .emoji-row {
-      font-size: 26px;
-      margin-bottom: 18px;
+      font-size: 22px;
+      margin: 6px 0 16px;
     }
 
-    .enigma-list {
+    .helpers {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .helper-card {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 8px 10px;
+      border: 1px dashed #d1d5db;
       text-align: left;
-      font-size: 13px;
-      color: #334155;
-      background: #e5f9f0;
-      border-radius: 18px;
-      padding: 14px 16px;
-      margin-bottom: 18px;
-      border: 1px solid #a5f3fc33;
     }
 
-    .enigma-list li {
-      margin-bottom: 6px;
-    }
-
-    .enigma-list li:last-child {
-      margin-bottom: 0;
+    .helper-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9ca3af;
+      margin-bottom: 4px;
     }
 
     .input-row {
       display: flex;
       gap: 10px;
       justify-content: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     input[type="text"] {
@@ -128,7 +173,6 @@
       font-size: 14px;
       font-family: inherit;
       text-align: center;
-      inputmode: numeric;
       transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
     }
 
@@ -138,30 +182,46 @@
       transform: translateY(-1px);
     }
 
-    button {
-      padding: 10px 18px;
+    .primary-btn, .secondary-btn {
+      padding: 9px 16px;
       border-radius: 999px;
       border: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       font-family: inherit;
       cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease, opacity 0.12s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .primary-btn {
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: white;
       box-shadow: 0 10px 25px rgba(22, 163, 74, 0.45);
-      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
     }
 
-    button:hover {
+    .primary-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 14px 30px rgba(22, 163, 74, 0.55);
       filter: brightness(1.03);
     }
 
-    button:active {
+    .primary-btn:active {
       transform: translateY(0);
       box-shadow: 0 8px 18px rgba(22, 163, 74, 0.45);
       filter: brightness(0.96);
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: #64748b;
+    }
+
+    .secondary-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
     }
 
     #missatge {
@@ -174,10 +234,11 @@
     .hint {
       font-size: 11px;
       color: #94a3b8;
+      margin-bottom: 10px;
     }
 
     .result {
-      margin-top: 20px;
+      margin-top: 16px;
       padding: 14px 18px;
       background: linear-gradient(135deg, #ecfdf3, #dcfce7);
       border-radius: 18px;
@@ -197,15 +258,28 @@
       font-weight: 700;
     }
 
-    @media (max-width: 480px) {
+    .hint-box {
+      background: #fefce8;
+      border-radius: 14px;
+      padding: 8px 10px;
+      border: 1px solid #facc15;
+      font-size: 12px;
+      color: #854d0e;
+      text-align: left;
+      margin-top: 6px;
+      display: none;
+    }
+
+    @media (max-width: 640px) {
       .card { padding: 24px 18px 22px; border-radius: 20px; }
       h1 { font-size: 24px; }
       .subtitle { font-size: 13px; }
-      .emoji-row { font-size: 22px; margin-bottom: 14px; }
-      .enigma-list { font-size: 12px; }
+      .riddle-box { font-size: 12px; }
+      .helpers { grid-template-columns: 1fr; }
+      .wrapper { padding: 16px; }
       .input-row { flex-direction: column; align-items: stretch; }
       input[type="text"] { width: 100%; }
-      button { width: 100%; }
+      .primary-btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -219,44 +293,93 @@
 
       <h1>Repte 3</h1>
       <p class="subtitle">
-        Aquest cop el codi està amagat entre anys, dècades i números que es repeteixen.<br>
-        Resol cada enigma i combina els dígits per trobar l’any correcte.
+        Aquest repte és una mica més rebuscat. Necessitaràs paper, boli
+        i recordar molt bé els aniversaris de la família.
       </p>
 
-      <div class="emoji-row">
-        📆 ➕ 🔢 ➜ ❓
+      <div class="step-tag">L'endevinalla</div>
+
+      <div class="riddle-box">
+        <p>
+          1. Suma els <span class="riddle-keyword">dies</span> d'aniversari (només el número del dia)
+          dels teus tres avis: l'avi i les dues àvies. Anomena aquest resultat <strong>G</strong>.
+        </p>
+        <p>
+          2. Ara fes el mateix amb els dies d'aniversari de les quatre persones
+          que formeu la família del pis: tu, el pare, la mare i la germana.
+          Anomena aquest resultat <strong>F</strong>.
+        </p>
+        <p>
+          3. Multiplica aquests dos números: <strong>N = G × F</strong>.
+        </p>
+        <p>
+          4. Quan tinguis <strong>N</strong>, hauràs de fer-hi una última operació estranya:
+          resta-li una versió “arrodonida” del nombre que relaciona la circumferència
+          i el diàmetre d'un cercle, emprant aproximadament <strong>3,14 multiplicat per 100</strong>.
+        </p>
+        <p>
+          5. El resultat final és un <strong>any molt important</strong>.
+          Escriu aquest any a continuació.
+        </p>
       </div>
 
-      <ul class="enigma-list">
-        <li><strong>1.</strong> Quantes dècades hi ha en 20 anys? → <em>dígit 1</em></li>
-        <li><strong>2.</strong> Si un any té 12 mesos i en retires 12, quants en queden? → <em>dígit 2</em></li>
-        <li><strong>3.</strong> Quin número es repeteix més vegades a “2022”? → <em>dígit 3</em></li>
-        <li><strong>4.</strong> Quants anys passen de 2020 a 2026 (sense comptar el 2020)? → <em>dígit 4</em></li>
-      </ul>
+      <div class="emoji-row">
+        👴➕👵➕👵  ✕  👨‍👩‍👧‍👦  −  🔵π  ➜  📆❓
+      </div>
 
-      <p class="subtitle" style="font-size: 13px; margin-bottom: 14px;">
-        Ara ordena els dígits en el mateix ordre dels enigmes i escriu l’any complet.
-      </p>
+      <div class="helpers">
+        <div class="helper-card">
+          <div class="helper-title">Consell</div>
+          Fes primer les sumes <strong>G</strong> i <strong>F</strong> en un paper.
+          Quan tinguis el resultat de la multiplicació, pensa
+          quina xifra especial s'hi pot restar que tingui a veure amb cercles.
+        </div>
+        <div class="helper-card">
+          <div class="helper-title">Recordatori</div>
+          No cal posar cap signe, només l'any de quatre xifres
+          que surt al final del càlcul.
+        </div>
+      </div>
 
       <div class="input-row">
         <input
           id="resposta"
           type="text"
-          placeholder="Escriu l'any…"
+          placeholder="Escriu l'any final…"
           autocomplete="off"
           inputmode="numeric"
         />
-        <button onclick="comprovar()">Comprova</button>
+        <button class="primary-btn" onclick="comprovar()">
+          Comprova solució
+        </button>
       </div>
 
       <p id="missatge"></p>
-      <p class="hint">Pista: l’any final és <em>futur</em>, no passat.</p>
+      <p class="hint">
+        Si us encalleu, podeu anar demanant pistes… però després no us queixeu que era massa fàcil. 😏
+      </p>
+
+      <div style="display:flex; gap:8px; justify-content:center; margin-bottom:4px;">
+        <button class="secondary-btn" onclick="toggleHint(1)">Mostra 1a pista</button>
+        <button class="secondary-btn" onclick="toggleHint(2)">Mostra 2a pista</button>
+      </div>
+
+      <div id="hint1" class="hint-box">
+        <strong>1a pista:</strong> G és la suma de 12, 9 i 31.  
+        F és la suma de 10, 5, 8 i 22.
+      </div>
+
+      <div id="hint2" class="hint-box">
+        <strong>2a pista:</strong> G × F = 2.340.  
+        Ara resta-li aproximadament <code>3,14 × 100 = 314</code> i mira quin any surt.
+      </div>
 
       <div id="pista-final" class="result">
         <div class="result-title">🎉 Codi completat!</div>
         <p>
-          Has desxifrat la seqüència correcta: l'<span>ANY és 2026</span>.<br>
-          Ja tens l’última peça del trencaclosques… ara només falta ajuntar-les totes.
+          Has arribat a l'any correcte: <span>2026</span>.<br>
+          Aquesta és la peça final del trencaclosques.  
+          Quan la combineu amb el dia i el mes dels altres reptes, el misteri quedarà revelat.
         </p>
       </div>
     </div>
@@ -264,21 +387,27 @@
 
   <script>
     function comprovar() {
-      const valor = document.getElementById('resposta').value.trim();
-      const missatge = document.getElementById('missatge');
-      const pista = document.getElementById('pista-final');
+      const valor = document.getElementById("resposta").value.trim();
+      const missatge = document.getElementById("missatge");
+      const pista = document.getElementById("pista-final");
 
-      if (valor === '2026') {
-        missatge.textContent = '';
-        pista.style.display = 'block';
+      if (valor === "2026") {
+        missatge.textContent = "";
+        pista.style.display = "block";
       } else {
-        pista.style.display = 'none';
+        pista.style.display = "none";
         if (!valor) {
-          missatge.textContent = 'Escriu algun any abans de comprovar 😉';
+          missatge.textContent = "Escriu algun any abans de comprovar 😉";
         } else {
-          missatge.textContent = 'Aquest any no encaixa amb els enigmes… torna-ho a revisar.';
+          missatge.textContent = "Aquest any no encaixa amb l'endevinalla… reviseu els càlculs.";
         }
       }
+    }
+
+    function toggleHint(n) {
+      const el = document.getElementById("hint" + n);
+      if (!el) return;
+      el.style.display = el.style.display === "block" ? "none" : "block";
     }
   </script>
 </body>
