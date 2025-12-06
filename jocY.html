@@ -3,25 +3,231 @@
 <head>
   <meta charset="UTF-8" />
   <title>Repte 2</title>
+
+  <!-- Poppins font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; text-align: center; }
-    .ocult { display: none; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #4ade80 0, #166534 45%, #020617 100%);
+      color: #0f172a;
+    }
+
+    .wrapper {
+      padding: 24px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: rgba(248, 250, 252, 0.96);
+      border-radius: 24px;
+      padding: 32px 28px 28px;
+      box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.35),
+        0 0 0 1px rgba(148, 163, 184, 0.35);
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+      animation: floatIn 0.7s ease-out forwards;
+      transform: translateY(10px);
+      opacity: 0;
+    }
+
+    @keyframes floatIn {
+      0%   { opacity: 0; transform: translateY(12px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: rgba(74, 222, 128, 0.12);
+      color: #166534;
+      margin-bottom: 16px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #020617;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 24px;
+      line-height: 1.55;
+    }
+
+    .emoji-row {
+      font-size: 30px;
+      margin-bottom: 24px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    input[type="text"] {
+      padding: 10px 14px;
+      min-width: 180px;
+      border-radius: 999px;
+      border: 1px solid #cbd5f5;
+      outline: none;
+      font-size: 14px;
+      font-family: inherit;
+      text-align: center;
+      text-transform: lowercase;
+      transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #22c55e;
+      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+      transform: translateY(-1px);
+    }
+
+    button {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.45);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(22, 163, 74, 0.55);
+      filter: brightness(1.03);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 18px rgba(22, 163, 74, 0.45);
+      filter: brightness(0.96);
+    }
+
+    #missatge {
+      font-size: 13px;
+      min-height: 18px;
+      color: #b91c1c;
+      margin-bottom: 4px;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, #ecfdf3, #dcfce7);
+      border-radius: 18px;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-size: 14px;
+      display: none;
+      text-align: left;
+    }
+
+    .result-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .result span {
+      font-weight: 700;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 24px 18px 22px; border-radius: 20px; }
+      h1 { font-size: 24px; }
+      .subtitle { font-size: 13px; }
+      .emoji-row { font-size: 26px; }
+      .input-row { flex-direction: column; align-items: stretch; }
+      input[type="text"] { width: 100%; }
+      button { width: 100%; }
+    }
   </style>
 </head>
 <body>
-  <h1>Repte 2</h1>
-  <p>Observa aquestes imatges simbòliques i descobreix quin mes representen.</p>
+  <div class="wrapper">
+    <div class="card">
+      <div class="pill">
+        <div class="dot"></div>
+        Repte del misteri
+      </div>
 
-  <p>🎃 🍂 🌰 📅 🎵</p>
+      <h1>Repte 2</h1>
+      <p class="subtitle">
+        Aquestes icones amaguen un mes molt concret.<br>
+        Pensa en la tardor, les castanyes, festes i música…
+      </p>
 
-  <input id="resposta" type="text" placeholder="Mes..." />
-  <button onclick="comprovar()">Comprova</button>
+      <div class="emoji-row">
+        🎃 🍂 🌰 📅 🎵
+      </div>
 
-  <p id="missatge"></p>
+      <div class="input-row">
+        <input
+          id="resposta"
+          type="text"
+          placeholder="Escriu el mes…"
+          autocomplete="off"
+        />
+        <button onclick="comprovar()">Comprova</button>
+      </div>
 
-  <div id="pista-final" class="ocult">
-    <h2>Ben jugat!</h2>
-    <p>Has resolt el misteri: el <strong>MES és OCTUBRE</strong>.</p>
+      <p id="missatge"></p>
+      <p class="hint">Pista: panellets, castanyes, fulles que cauen… ja ens entenem.</p>
+
+      <div id="pista-final" class="result">
+        <div class="result-title">🍁 Ho has clavat!</div>
+        <p>
+          Has resolt el misteri del mes: el <span>MES és OCTUBRE</span>.<br>
+          Guarda bé aquesta peça del trencaclosques.
+        </p>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -32,9 +238,14 @@
 
       if (valor === 'octubre') {
         missatge.textContent = '';
-        pista.classList.remove('ocult');
+        pista.style.display = 'block';
       } else {
-        missatge.textContent = 'No sembla el mes correcte... prova un altre cop.';
+        pista.style.display = 'none';
+        if (!valor) {
+          missatge.textContent = 'Primer escriu un mes i després comprovem 😉';
+        } else {
+          missatge.textContent = 'Aquest mes no quadra amb les pistes… torna-ho a provar.';
+        }
       }
     }
   </script>
