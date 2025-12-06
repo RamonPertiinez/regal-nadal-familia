@@ -39,7 +39,7 @@
       box-shadow:
         0 18px 40px rgba(15, 23, 42, 0.35),
         0 0 0 1px rgba(148, 163, 184, 0.35);
-      max-width: 560px;
+      max-width: 620px;
       margin: 0 auto;
       text-align: center;
       animation: floatIn 0.7s ease-out forwards;
@@ -84,42 +84,56 @@
     .subtitle {
       font-size: 14px;
       color: #475569;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       line-height: 1.55;
     }
 
-    .emoji-row {
-      font-size: 30px;
-      margin-bottom: 24px;
+    .subtitle strong {
+      font-weight: 600;
+      color: #0f172a;
     }
 
-    .input-row {
+    .roulette-wrapper {
+      margin-bottom: 18px;
+    }
+
+    .roulette-track {
       display: flex;
-      gap: 10px;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-bottom: 12px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
-    input[type="text"] {
-      padding: 10px 14px;
-      min-width: 180px;
+    .month-pill {
+      padding: 7px 12px;
       border-radius: 999px;
-      border: 1px solid #cbd5f5;
-      outline: none;
-      font-size: 14px;
-      font-family: inherit;
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #64748b;
+      min-width: 86px;
       text-align: center;
-      text-transform: lowercase;
-      transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+                  border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
     }
 
-    input[type="text"]:focus {
-      border-color: #22c55e;
-      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
-      transform: translateY(-1px);
+    .month-pill.active {
+      background: #22c55e;
+      border-color: #16a34a;
+      color: #f8fafc;
+      box-shadow: 0 10px 22px rgba(22, 163, 74, 0.55);
+      transform: translateY(-2px) scale(1.03);
     }
 
-    button {
+    .roulette-indicator {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .primary-btn {
       padding: 10px 18px;
       border-radius: 999px;
       border: none;
@@ -130,19 +144,28 @@
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: white;
       box-shadow: 0 10px 25px rgba(22, 163, 74, 0.45);
-      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease, opacity 0.12s ease;
+      margin-bottom: 10px;
+      min-width: 180px;
     }
 
-    button:hover {
+    .primary-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 14px 30px rgba(22, 163, 74, 0.55);
       filter: brightness(1.03);
     }
 
-    button:active {
+    .primary-btn:active {
       transform: translateY(0);
       box-shadow: 0 8px 18px rgba(22, 163, 74, 0.45);
       filter: brightness(0.96);
+    }
+
+    .primary-btn.disabled {
+      opacity: 0.5;
+      cursor: default;
+      box-shadow: none;
+      transform: none;
     }
 
     #missatge {
@@ -158,7 +181,7 @@
     }
 
     .result {
-      margin-top: 20px;
+      margin-top: 18px;
       padding: 14px 18px;
       background: linear-gradient(135deg, #ecfdf3, #dcfce7);
       border-radius: 18px;
@@ -178,14 +201,13 @@
       font-weight: 700;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 540px) {
       .card { padding: 24px 18px 22px; border-radius: 20px; }
       h1 { font-size: 24px; }
       .subtitle { font-size: 13px; }
-      .emoji-row { font-size: 26px; }
-      .input-row { flex-direction: column; align-items: stretch; }
-      input[type="text"] { width: 100%; }
-      button { width: 100%; }
+      .month-pill { min-width: 44%; font-size: 11px; }
+      .wrapper { padding: 16px; }
+      .primary-btn { width: 100%; }
     }
   </style>
 </head>
@@ -199,55 +221,120 @@
 
       <h1>Repte 2</h1>
       <p class="subtitle">
-        Aquestes icones amaguen un mes molt concret.<br>
-        Pensa en la tardor, les castanyes, festes i música…
+        Avui el destí es decideix amb una <strong>ruleta de mesos</strong>.<br>
+        El mes on s'aturi amaga una data important que encara no coneixeu.
       </p>
 
-      <div class="emoji-row">
-        🎃 🍂 🌰 📅 🎵
+      <div class="roulette-wrapper">
+        <div id="rouletteTrack" class="roulette-track">
+          <!-- S'omple des de JavaScript -->
+        </div>
+        <div class="roulette-indicator" id="rouletteIndicator">
+          Premeu el botó per fer girar la ruleta.
+        </div>
       </div>
 
-      <div class="input-row">
-        <input
-          id="resposta"
-          type="text"
-          placeholder="Escriu el mes…"
-          autocomplete="off"
-        />
-        <button onclick="comprovar()">Comprova</button>
-      </div>
+      <button id="spinBtn" class="primary-btn" onclick="spinRoulette()">
+        Gira la ruleta
+      </button>
 
       <p id="missatge"></p>
-      <p class="hint">Pista: panellets, castanyes, fulles que cauen… ja ens entenem.</p>
+      <p class="hint">
+        Truc: potser no és tan aleatori com sembla… fixeu-vos bé en el mes que surt.
+      </p>
 
       <div id="pista-final" class="result">
-        <div class="result-title">🍁 Ho has clavat!</div>
+        <div class="result-title">🍁 Ho teniu!</div>
         <p>
-          Has resolt el misteri del mes: el <span>MES és OCTUBRE</span>.<br>
-          Guarda bé aquesta peça del trencaclosques.
+          La ruleta ha decidit: el <span>MES és OCTUBRE</span>.<br>
+          Apunteu-lo bé: serà clau per resoldre el misteri complet.
         </p>
       </div>
     </div>
   </div>
 
   <script>
-    function comprovar() {
-      const valor = document.getElementById('resposta').value.trim().toLowerCase();
-      const missatge = document.getElementById('missatge');
-      const pista = document.getElementById('pista-final');
+    const months = [
+      "Gener", "Febrer", "Març", "Abril",
+      "Maig", "Juny", "Juliol", "Agost",
+      "Setembre", "Octubre", "Novembre", "Desembre"
+    ];
 
-      if (valor === 'octubre') {
-        missatge.textContent = '';
-        pista.style.display = 'block';
-      } else {
-        pista.style.display = 'none';
-        if (!valor) {
-          missatge.textContent = 'Primer escriu un mes i després comprovem 😉';
-        } else {
-          missatge.textContent = 'Aquest mes no quadra amb les pistes… torna-ho a provar.';
-        }
-      }
+    const rouletteTrack = document.getElementById("rouletteTrack");
+    const rouletteIndicator = document.getElementById("rouletteIndicator");
+    const spinBtn = document.getElementById("spinBtn");
+    const missatge = document.getElementById("missatge");
+    const resultatBox = document.getElementById("pista-final");
+
+    let spinning = false;
+    let currentIndex = 0;
+    let monthElements = [];
+
+    function renderMonths() {
+      months.forEach((m, index) => {
+        const div = document.createElement("div");
+        div.className = "month-pill";
+        div.dataset.index = index.toString();
+        div.textContent = m;
+        rouletteTrack.appendChild(div);
+        monthElements.push(div);
+      });
+      updateActive();
     }
+
+    function updateActive() {
+      monthElements.forEach((el, idx) => {
+        el.classList.toggle("active", idx === currentIndex);
+      });
+    }
+
+    function spinRoulette() {
+      if (spinning) return;
+
+      spinning = true;
+      missatge.textContent = "";
+      resultatBox.style.display = "none";
+      rouletteIndicator.textContent = "La ruleta està girant…";
+      spinBtn.classList.add("disabled");
+      spinBtn.textContent = "Girant…";
+
+      const targetIndex = months.indexOf("Octubre"); // ruleta trucada ;)
+      const fullRounds = 3; // voltes senceres
+      const totalSteps = fullRounds * months.length + targetIndex; // acaba a Octubre
+
+      let step = 0;
+      const baseInterval = 90; // ms
+
+      const intervalId = setInterval(() => {
+        currentIndex = (currentIndex + 1) % months.length;
+        updateActive();
+        step++;
+
+        // efecte de frenada: a partir de certa volta, allarguem una mica
+        if (step > totalSteps - 8) {
+          // fem un petit retard afegit
+          // (simplement no fem res especial, el "frenat" és visual perquè ja en queden pocs)
+        }
+
+        if (step >= totalSteps) {
+          clearInterval(intervalId);
+          spinning = false;
+          spinBtn.classList.remove("disabled");
+          spinBtn.textContent = "Tornar a girar";
+
+          const selected = months[currentIndex];
+          rouletteIndicator.textContent = "La ruleta s'ha aturat a: " + selected;
+
+          if (selected === "Octubre") {
+            resultatBox.style.display = "block";
+          } else {
+            missatge.textContent = "Ui, això no hauria de passar…";
+          }
+        }
+      }, baseInterval);
+    }
+
+    renderMonths();
   </script>
 </body>
 </html>
