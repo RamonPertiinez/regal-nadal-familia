@@ -2,7 +2,7 @@
 <html lang="ca">
 <head>
   <meta charset="UTF-8" />
-  <title>Repte 2</title>
+  <title>Repte 3</title>
 
   <!-- Poppins font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,13 +33,13 @@
     }
 
     .card {
-      background: rgba(248, 250, 252, 0.96);
+      background: rgba(248, 250, 252, 0.97);
       border-radius: 24px;
-      padding: 32px 28px 28px;
+      padding: 32px 28px 24px;
       box-shadow:
         0 18px 40px rgba(15, 23, 42, 0.35),
         0 0 0 1px rgba(148, 163, 184, 0.35);
-      max-width: 620px;
+      max-width: 700px;
       margin: 0 auto;
       text-align: center;
       animation: floatIn 0.7s ease-out forwards;
@@ -84,8 +84,8 @@
     .subtitle {
       font-size: 14px;
       color: #475569;
-      margin-bottom: 22px;
-      line-height: 1.55;
+      margin-bottom: 18px;
+      line-height: 1.6;
     }
 
     .subtitle strong {
@@ -93,60 +93,64 @@
       color: #0f172a;
     }
 
-    .roulette-wrapper {
-      margin-bottom: 18px;
+    .emoji-equation {
+      margin: 10px 0 18px;
+      font-size: 26px;
+      line-height: 1.8;
     }
 
-    .roulette-track {
+    .emoji-line {
+      margin: 4px 0;
+    }
+
+    .divider {
+      border-top: 1px dashed #cbd5f5;
+      margin: 14px 0 16px;
+    }
+
+    .input-row {
       display: flex;
-      flex-wrap: wrap;
+      gap: 10px;
       justify-content: center;
-      gap: 8px;
       margin-bottom: 10px;
     }
 
-    .month-pill {
-      padding: 7px 12px;
+    input[type="text"] {
+      padding: 10px 14px;
+      min-width: 160px;
       border-radius: 999px;
-      border: 1px solid #e2e8f0;
-      background: #f8fafc;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #64748b;
-      min-width: 86px;
+      border: 1px solid #cbd5f5;
+      outline: none;
+      font-size: 14px;
+      font-family: inherit;
       text-align: center;
-      transition: transform 0.15s ease, box-shadow 0.15s ease,
-                  border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      transition: box-shadow 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
     }
 
-    .month-pill.active {
-      background: #22c55e;
-      border-color: #16a34a;
-      color: #f8fafc;
-      box-shadow: 0 10px 22px rgba(22, 163, 74, 0.55);
-      transform: translateY(-2px) scale(1.03);
+    input[type="text"]:focus {
+      border-color: #22c55e;
+      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+      transform: translateY(-1px);
     }
 
-    .roulette-indicator {
-      font-size: 11px;
-      color: #94a3b8;
-    }
-
-    .primary-btn {
-      padding: 10px 18px;
+    .primary-btn, .secondary-btn {
+      padding: 9px 16px;
       border-radius: 999px;
       border: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       font-family: inherit;
       cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease, opacity 0.12s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .primary-btn {
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: white;
       box-shadow: 0 10px 25px rgba(22, 163, 74, 0.45);
-      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease, opacity 0.12s ease;
-      margin-bottom: 10px;
-      min-width: 180px;
     }
 
     .primary-btn:hover {
@@ -161,11 +165,14 @@
       filter: brightness(0.96);
     }
 
-    .primary-btn.disabled {
-      opacity: 0.5;
-      cursor: default;
-      box-shadow: none;
-      transform: none;
+    .secondary-btn {
+      background: transparent;
+      color: #64748b;
+    }
+
+    .secondary-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
     }
 
     #missatge {
@@ -178,10 +185,11 @@
     .hint {
       font-size: 11px;
       color: #94a3b8;
+      margin-bottom: 10px;
     }
 
     .result {
-      margin-top: 18px;
+      margin-top: 16px;
       padding: 14px 18px;
       background: linear-gradient(135deg, #ecfdf3, #dcfce7);
       border-radius: 18px;
@@ -201,13 +209,27 @@
       font-weight: 700;
     }
 
-    @media (max-width: 540px) {
+    .hint-box {
+      background: #fefce8;
+      border-radius: 14px;
+      padding: 8px 10px;
+      border: 1px solid #facc15;
+      font-size: 12px;
+      color: #854d0e;
+      text-align: left;
+      margin-top: 6px;
+      display: none;
+    }
+
+    @media (max-width: 640px) {
       .card { padding: 24px 18px 22px; border-radius: 20px; }
       h1 { font-size: 24px; }
       .subtitle { font-size: 13px; }
-      .month-pill { min-width: 44%; font-size: 11px; }
+      .emoji-equation { font-size: 22px; }
       .wrapper { padding: 16px; }
-      .primary-btn { width: 100%; }
+      .input-row { flex-direction: column; align-items: stretch; }
+      input[type="text"] { width: 100%; }
+      .primary-btn { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -219,119 +241,117 @@
         Repte del misteri
       </div>
 
-      <h1>Repte 2</h1>
+      <h1>Repte 3</h1>
       <p class="subtitle">
-        Avui el destí es decideix amb una <strong>ruleta de mesos</strong>.<br>
-        El mes on s'aturi amaga una data important que encara no coneixeu.
+        Hi ha famílies que es compten per històries, i d'altres que es compten per
+        <strong>dies de pastís</strong>.  
+        Aquest cop, la resposta s'amaga en la manera com
+        <strong>els avis</strong> i <strong>la família de casa</strong>
+        celebren les seves voltes al sol.
       </p>
 
-      <div class="roulette-wrapper">
-        <div id="rouletteTrack" class="roulette-track">
-          <!-- S'omple des de JavaScript -->
+      <div class="emoji-equation">
+        <div class="emoji-line">
+          👴➕👵➕👵
         </div>
-        <div class="roulette-indicator" id="rouletteIndicator">
-          Premeu el botó per fer girar la ruleta.
+
+        <div class="emoji-line">✖️</div>
+
+        <div class="emoji-line">
+          🧑➕👨‍🦳➕👩‍🦰➕👧
+        </div>
+
+        <div class="emoji-line">−</div>
+
+        <div class="emoji-line">
+          <span style="font-size:20px;">100</span> &nbsp;✖️ &nbsp;π
+        </div>
+
+        <div class="emoji-line">=</div>
+
+        <div class="emoji-line">
+          📆 ❓❓❓❓
         </div>
       </div>
 
-      <button id="spinBtn" class="primary-btn" onclick="spinRoulette()">
-        Gira la ruleta
-      </button>
+      <div class="divider"></div>
+
+      <p class="hint">
+        La resposta final és un any de 4 xifres.  
+        Tot es calcula només amb <strong>números de dia</strong> dels aniversaris.
+      </p>
+
+      <div class="input-row">
+        <input
+          id="resposta"
+          type="text"
+          placeholder="Escriu l'any final…"
+          autocomplete="off"
+          inputmode="numeric"
+        />
+        <button class="primary-btn" onclick="comprovar()">
+          Comprova solució
+        </button>
+      </div>
 
       <p id="missatge"></p>
 
+      <div style="display:flex; gap:8px; justify-content:center; margin-bottom:4px; margin-top:4px;">
+        <button class="secondary-btn" onclick="toggleHint(1)">Pista suau</button>
+        <button class="secondary-btn" onclick="toggleHint(2)">Pista molt directa</button>
+      </div>
+
+      <div id="hint1" class="hint-box">
+        <strong>Pista suau:</strong>
+        pensa només en els números del dia de cada aniversari  
+        (22, 9, 30… i també 10, 5, 8, 22).  
+        Primer suma els avis, després la família, i multiplica aquests dos resultats.
+      </div>
+
+      <div id="hint2" class="hint-box">
+        <strong>Pista directa:</strong><br>
+        Avis: 22 + 9 + 30 = 61<br>
+        Família: 10 + 5 + 8 + 22 = 45<br>
+        61 × 45 = 2.745<br>
+        Ara fes:<br>
+        &nbsp;&nbsp;2.745 − (100 × π ≈ 314) − (4 × 100) − 5 = <strong>2.026</strong>.
+      </div>
+
       <div id="pista-final" class="result">
-        <div class="result-title">🍁 Ho teniu!</div>
+        <div class="result-title">🎉 Codi completat!</div>
         <p>
-          La ruleta ha decidit: el <span>MES és OCTUBRE</span>.<br>
-          Apunteu-lo bé: serà clau per resoldre el misteri complet.
+          Has arribat a l'any correcte: <span>2026</span>.<br>
+          Aquesta és la peça final del trencaclosques.  
+          Quan la combineu amb el dia i el mes dels altres reptes, el misteri quedarà revelat.
         </p>
       </div>
     </div>
   </div>
 
   <script>
-    const months = [
-      "Gener", "Febrer", "Març", "Abril",
-      "Maig", "Juny", "Juliol", "Agost",
-      "Setembre", "Octubre", "Novembre", "Desembre"
-    ];
+    function comprovar() {
+      const valor = document.getElementById("resposta").value.trim();
+      const missatge = document.getElementById("missatge");
+      const pista = document.getElementById("pista-final");
 
-    const rouletteTrack = document.getElementById("rouletteTrack");
-    const rouletteIndicator = document.getElementById("rouletteIndicator");
-    const spinBtn = document.getElementById("spinBtn");
-    const missatge = document.getElementById("missatge");
-    const resultatBox = document.getElementById("pista-final");
-
-    let spinning = false;
-    let currentIndex = 0;
-    let monthElements = [];
-
-    function renderMonths() {
-      months.forEach((m, index) => {
-        const div = document.createElement("div");
-        div.className = "month-pill";
-        div.dataset.index = index.toString();
-        div.textContent = m;
-        rouletteTrack.appendChild(div);
-        monthElements.push(div);
-      });
-      updateActive();
-    }
-
-    function updateActive() {
-      monthElements.forEach((el, idx) => {
-        el.classList.toggle("active", idx === currentIndex);
-      });
-    }
-
-    function spinRoulette() {
-      if (spinning) return;
-
-      spinning = true;
-      missatge.textContent = "";
-      resultatBox.style.display = "none";
-      rouletteIndicator.textContent = "La ruleta està girant…";
-      spinBtn.classList.add("disabled");
-      spinBtn.textContent = "Girant…";
-
-      const targetIndex = months.indexOf("Octubre"); // ruleta trucada ;)
-      const fullRounds = 3; // voltes senceres
-      const totalSteps = fullRounds * months.length + targetIndex; // acaba a Octubre
-
-      let step = 0;
-      const baseInterval = 90; // ms
-
-      const intervalId = setInterval(() => {
-        currentIndex = (currentIndex + 1) % months.length;
-        updateActive();
-        step++;
-
-        // efecte de frenada: a partir de certa volta, allarguem una mica
-        if (step > totalSteps - 8) {
-          // fem un petit retard afegit
-          // (simplement no fem res especial, el "frenat" és visual perquè ja en queden pocs)
+      if (valor === "2026") {
+        missatge.textContent = "";
+        pista.style.display = "block";
+      } else {
+        pista.style.display = "none";
+        if (!valor) {
+          missatge.textContent = "Escriu algun any abans de comprovar 😉";
+        } else {
+          missatge.textContent = "Aquest any no encaixa amb el joc… reviseu els dies de pastís i el 100 × π.";
         }
-
-        if (step >= totalSteps) {
-          clearInterval(intervalId);
-          spinning = false;
-          spinBtn.classList.remove("disabled");
-          spinBtn.textContent = "Tornar a girar";
-
-          const selected = months[currentIndex];
-          rouletteIndicator.textContent = "La ruleta s'ha aturat a: " + selected;
-
-          if (selected === "Octubre") {
-            resultatBox.style.display = "block";
-          } else {
-            missatge.textContent = "Ui, això no hauria de passar…";
-          }
-        }
-      }, baseInterval);
+      }
     }
 
-    renderMonths();
+    function toggleHint(n) {
+      const el = document.getElementById("hint" + n);
+      if (!el) return;
+      el.style.display = el.style.display === "block" ? "none" : "block";
+    }
   </script>
 </body>
 </html>
