@@ -35,11 +35,11 @@
     .card {
       background: rgba(248, 250, 252, 0.97);
       border-radius: 24px;
-      padding: 32px 28px 26px;
+      padding: 32px 28px 24px;
       box-shadow:
         0 18px 40px rgba(15, 23, 42, 0.35),
         0 0 0 1px rgba(148, 163, 184, 0.35);
-      max-width: 680px;
+      max-width: 700px;
       margin: 0 auto;
       text-align: center;
       animation: floatIn 0.7s ease-out forwards;
@@ -88,73 +88,32 @@
       line-height: 1.6;
     }
 
-    .step-tag {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: #e2f3ff;
-      color: #0f172a;
-      font-size: 11px;
+    .subtitle strong {
       font-weight: 600;
+      color: #0f172a;
+    }
+
+    .emoji-equation {
+      margin: 10px 0 18px;
+      font-size: 26px;
+      line-height: 1.8;
+    }
+
+    .emoji-line {
+      margin: 4px 0;
+    }
+
+    .emoji-caption {
+      font-size: 11px;
+      color: #94a3b8;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      margin-bottom: 10px;
+      margin-top: 4px;
     }
 
-    .riddle-box {
-      text-align: left;
-      background: #f1f5f9;
-      border-radius: 18px;
-      padding: 14px 16px;
-      border: 1px solid #e2e8f0;
-      font-size: 13px;
-      color: #1e293b;
-      margin-bottom: 16px;
-    }
-
-    .riddle-box p {
-      margin-bottom: 8px;
-    }
-
-    .riddle-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .riddle-keyword {
-      font-weight: 600;
-      color: #0f172a;
-    }
-
-    .emoji-row {
-      font-size: 22px;
-      margin: 6px 0 16px;
-    }
-
-    .helpers {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 16px;
-      font-size: 12px;
-      color: #64748b;
-    }
-
-    .helper-card {
-      background: #f8fafc;
-      border-radius: 16px;
-      padding: 8px 10px;
-      border: 1px dashed #d1d5db;
-      text-align: left;
-    }
-
-    .helper-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #9ca3af;
-      margin-bottom: 4px;
+    .divider {
+      border-top: 1px dashed #cbd5f5;
+      margin: 14px 0 16px;
     }
 
     .input-row {
@@ -274,8 +233,7 @@
       .card { padding: 24px 18px 22px; border-radius: 20px; }
       h1 { font-size: 24px; }
       .subtitle { font-size: 13px; }
-      .riddle-box { font-size: 12px; }
-      .helpers { grid-template-columns: 1fr; }
+      .emoji-equation { font-size: 22px; }
       .wrapper { padding: 16px; }
       .input-row { flex-direction: column; align-items: stretch; }
       input[type="text"] { width: 100%; }
@@ -293,53 +251,47 @@
 
       <h1>Repte 3</h1>
       <p class="subtitle">
-        Aquest repte és una mica més rebuscat. Necessitaràs paper, boli
-        i recordar molt bé els aniversaris de la família.
+        Hi ha famílies que es compten per històries, i d'altres que es compten per
+        <strong>dies de pastís</strong>.  
+        Aquest cop, la resposta s'amaga en la manera com
+        <strong>els avis</strong> i <strong>la família de casa</strong>
+        celebren les seves voltes al sol.
       </p>
 
-      <div class="step-tag">L'endevinalla</div>
-
-      <div class="riddle-box">
-        <p>
-          1. Suma els <span class="riddle-keyword">dies</span> d'aniversari (només el número del dia)
-          dels teus tres avis: l'avi i les dues àvies. Anomena aquest resultat <strong>G</strong>.
-        </p>
-        <p>
-          2. Ara fes el mateix amb els dies d'aniversari de les quatre persones
-          que formeu la família del pis: tu, el pare, la mare i la germana.
-          Anomena aquest resultat <strong>F</strong>.
-        </p>
-        <p>
-          3. Multiplica aquests dos números: <strong>N = G × F</strong>.
-        </p>
-        <p>
-          4. Quan tinguis <strong>N</strong>, hauràs de fer-hi una última operació estranya:
-          resta-li una versió “arrodonida” del nombre que relaciona la circumferència
-          i el diàmetre d'un cercle, emprant aproximadament <strong>3,14 multiplicat per 100</strong>.
-        </p>
-        <p>
-          5. El resultat final és un <strong>any molt important</strong>.
-          Escriu aquest any a continuació.
-        </p>
-      </div>
-
-      <div class="emoji-row">
-        👴➕👵➕👵  ✕  👨‍👩‍👧‍👦  −  🔵π  ➜  📆❓
-      </div>
-
-      <div class="helpers">
-        <div class="helper-card">
-          <div class="helper-title">Consell</div>
-          Fes primer les sumes <strong>G</strong> i <strong>F</strong> en un paper.
-          Quan tinguis el resultat de la multiplicació, pensa
-          quina xifra especial s'hi pot restar que tingui a veure amb cercles.
+      <div class="emoji-equation">
+        <div class="emoji-line">
+          👴➕👵➕👵 ➕ 🎂🎂🎂
         </div>
-        <div class="helper-card">
-          <div class="helper-title">Recordatori</div>
-          No cal posar cap signe, només l'any de quatre xifres
-          que surt al final del càlcul.
+        <div class="emoji-caption">avis &nbsp;· &nbsp;dies d'aniversari</div>
+
+        <div class="emoji-line">✖️</div>
+
+        <div class="emoji-line">
+          🧑➕👨‍🦳➕👩‍🦰➕👧 ➕ 🎂🎂🎂🎂
         </div>
+        <div class="emoji-caption">família &nbsp;· &nbsp;dies d'aniversari</div>
+
+        <div class="emoji-line">−</div>
+
+        <div class="emoji-line">
+          <span style="font-size:20px;">100</span> &nbsp;✖️ &nbsp;π
+        </div>
+        <div class="emoji-caption">una mica de matemàtica rodona</div>
+
+        <div class="emoji-line">=</div>
+
+        <div class="emoji-line">
+          📆 ❓❓❓❓
+        </div>
+        <div class="emoji-caption">un any que encara no ha arribat</div>
       </div>
+
+      <div class="divider"></div>
+
+      <p class="hint">
+        La resposta final és un any de 4 xifres.  
+        Tot es calcula només amb <strong>números de dia</strong> dels aniversaris.
+      </p>
 
       <div class="input-row">
         <input
@@ -355,23 +307,25 @@
       </div>
 
       <p id="missatge"></p>
-      <p class="hint">
-        Si us encalleu, podeu anar demanant pistes… però després no us queixeu que era massa fàcil. 😏
-      </p>
 
-      <div style="display:flex; gap:8px; justify-content:center; margin-bottom:4px;">
-        <button class="secondary-btn" onclick="toggleHint(1)">Mostra 1a pista</button>
-        <button class="secondary-btn" onclick="toggleHint(2)">Mostra 2a pista</button>
+      <div style="display:flex; gap:8px; justify-content:center; margin-bottom:4px; margin-top:4px;">
+        <button class="secondary-btn" onclick="toggleHint(1)">Pista suau</button>
+        <button class="secondary-btn" onclick="toggleHint(2)">Pista molt directa</button>
       </div>
 
       <div id="hint1" class="hint-box">
-        <strong>1a pista:</strong> G és la suma de 12, 9 i 31.  
-        F és la suma de 10, 5, 8 i 22.
+        <strong>Pista suau:</strong> pensa només en els números del dia de cada aniversari
+        (12, 9, 31… i també 10, 5, 8, 22).  
+        Primer suma els avis, després la família, i multiplica aquests dos resultats.
       </div>
 
       <div id="hint2" class="hint-box">
-        <strong>2a pista:</strong> G × F = 2.340.  
-        Ara resta-li aproximadament <code>3,14 × 100 = 314</code> i mira quin any surt.
+        <strong>Pista directa:</strong>  
+        Avis: 12 + 9 + 31 = 52  
+        Família: 10 + 5 + 8 + 22 = 45  
+        52 × 45 = 2.340  
+        100 × π ≈ 314  
+        2.340 − 314 = <strong>2026</strong>.
       </div>
 
       <div id="pista-final" class="result">
@@ -399,7 +353,7 @@
         if (!valor) {
           missatge.textContent = "Escriu algun any abans de comprovar 😉";
         } else {
-          missatge.textContent = "Aquest any no encaixa amb l'endevinalla… reviseu els càlculs.";
+          missatge.textContent = "Aquest any no encaixa amb el joc… reviseu els dies de pastís i el 100 × π.";
         }
       }
     }
