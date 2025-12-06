@@ -2,7 +2,7 @@
 <html lang="ca">
 <head>
   <meta charset="UTF-8" />
-  <title>Missió de la germana</title>
+  <title>Repte 3</title>
   <style>
     body { font-family: sans-serif; max-width: 600px; margin: 40px auto; text-align: center; }
     .ocult { display: none; }
@@ -10,14 +10,14 @@
   </style>
 </head>
 <body>
-  <h1>Missió de la germana</h1>
-  <p>Resol aquests enigmes i combina els dígits resultants.</p>
+  <h1>Repte 3</h1>
+  <p>Resol els enigmes següents i combina els dígits obtinguts.</p>
 
   <ul>
     <li><strong>1.</strong> Quantes dècades hi ha en 20 anys? → <em>dígit 1</em></li>
-    <li><strong>2.</strong> Si un any té 12 mesos i en traiem 12, quants en queden? → <em>dígit 2</em></li>
-    <li><strong>3.</strong> Quin número es repeteix més vegades a ‘2022’? → <em>dígit 3</em></li>
-    <li><strong>4.</strong> Quants anys passen de 2020 fins a 2026 (sense comptar el 2020)? → <em>dígit 4</em></li>
+    <li><strong>2.</strong> Si un any té 12 mesos i en retires 12, quants en queden? → <em>dígit 2</em></li>
+    <li><strong>3.</strong> Quin número es repeteix més a '2022'? → <em>dígit 3</em></li>
+    <li><strong>4.</strong> Quants anys passen de 2020 a 2026 (sense comptar 2020)? → <em>dígit 4</em></li>
   </ul>
 
   <p>Introdueix el número final:</p>
@@ -28,8 +28,8 @@
   <p id="missatge"></p>
 
   <div id="pista-final" class="ocult">
-    <h2>Enhorabona!</h2>
-    <p>La teva part del misteri és l'<strong>ANY: 2026</strong>.</p>
+    <h2>Excel·lent!</h2>
+    <p>Has completat el codi: l'<strong>ANY és 2026</strong>.</p>
   </div>
 
   <script>
@@ -42,7 +42,7 @@
         missatge.textContent = '';
         pista.classList.remove('ocult');
       } else {
-        missatge.textContent = 'No és l\'any correcte… torna-hi!';
+        missatge.textContent = 'Aquest no és l\'any correcte... torna a intentar-ho.';
       }
     }
   </script>
